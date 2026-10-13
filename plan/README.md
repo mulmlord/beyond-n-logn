@@ -44,15 +44,14 @@ This `plan/` folder lives on the fork's `main`, alongside the upstream
 sources. Upstream never touches `plan/`. Local setup:
 
 ```
-<project dir>/            e.g. ~/Projects/beyond-n-logn
-├── upstream/             checkout of this fork (contains plan/)
-├── .venv/                Python environment for replays
-└── work/                 replay work directories (verifiers refuse paths inside the checkout)
+~/Projects/
+├── beyond-n-logn/        checkout of this fork (contains plan/)
+│   └── .venv/            Python environment for replays (gitignored)
+└── beyond-n-logn-work/   replay work directories (verifiers refuse paths inside the checkout)
 ```
 
-The checkout directory is named `upstream/`, which clashes with the repository's
-own `upstream/` folder (the pinned manuscript snapshot). Inside these docs,
-`upstream/` means the checkout unless a path says otherwise.
+`upstream/` inside the checkout is the repository's own pinned manuscript
+snapshot. Leave it unchanged.
 
 Branches for upstream PRs must start from `origin-upstream/main`, never from
 the fork's `main`, so `plan/` stays out of them. See [docs/pins.md](docs/pins.md).
