@@ -1,0 +1,78 @@
+{
+ "target": "make frontier942-verify",
+ "upstream_commit": "abdc6a7002abdbcd9e21bfc5e1a795784deacfdf",
+ "date": "2026-10-13",
+ "status": "PASS_COMPLETE_PR942_COMPOSITION",
+ "kappa": "1661960547713947/1000000000000000000",
+ "decimal": "0.001661960547713947",
+ "reused_completed_baseline": false,
+ "stages": [
+  {
+   "name": "baseline799-cold",
+   "seconds": 1408.914
+  },
+  {
+   "name": "ancestry-coverage",
+   "seconds": 0.054
+  },
+  {
+   "name": "baseline799-binding",
+   "seconds": 0.087
+  },
+  {
+   "name": "u8-native",
+   "seconds": 338.656
+  },
+  {
+   "name": "prepare",
+   "seconds": 0.055
+  },
+  {
+   "name": "frozen-construction",
+   "seconds": 2.209
+  },
+  {
+   "name": "independent-owners",
+   "seconds": 10.319
+  },
+  {
+   "name": "build-parent",
+   "seconds": 4.18
+  },
+  {
+   "name": "check-parent",
+   "seconds": 13.909
+  },
+  {
+   "name": "independent-price",
+   "seconds": 0.683
+  },
+  {
+   "name": "discovery",
+   "seconds": 63.16
+  },
+  {
+   "name": "strict",
+   "seconds": 64.111
+  },
+  {
+   "name": "payload-controls",
+   "seconds": 0.49
+  },
+  {
+   "name": "final-binding",
+   "seconds": 5.567
+  }
+ ],
+ "counts": {
+  "roles": 167832,
+  "calls": 333,
+  "prefix_bits": 779,
+  "charged_prefix_bits": 1024,
+  "row_coefficient": 17495
+ },
+ "wall_clock_seconds": 1918,
+ "peak_system_memory_used_mb": 16834,
+ "work_dir": "work/integer-mult-frontier942.PBXIxp/replay",
+ "environment": "plan/docs/environment.md"
+}
