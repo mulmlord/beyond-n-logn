@@ -20,16 +20,17 @@ uv pip install --python .venv/bin/python numpy sympy scipy
 
 ## Running a replay
 
-Verifiers refuse work directories inside the checkout, so use `work/` in the
-project directory (see the layout in [../README.md](../README.md)):
+Verifiers refuse work directories inside the checkout, so use the sibling
+`beyond-n-logn-work/` directory (see the layout in [../README.md](../README.md)).
+From the checkout root:
 
 ```sh
-P=$(git -C <checkout> rev-parse --show-toplevel)/..   # project dir
-PATH="$P/.venv/bin:$PATH" TMPDIR="$P/work" make -C "$P/upstream" frontier942-verify
+R=$(git rev-parse --show-toplevel); W="$R/../beyond-n-logn-work"
+PATH="$R/.venv/bin:$PATH" TMPDIR="$W" make -C "$R" frontier942-verify
 ```
 
-Use absolute paths in scripted runs. A relative `cd upstream` did not land in
-the checkout in one of our background runs.
+Use absolute paths in scripted runs. In one of our background runs, a
+relative `cd` did not land in the checkout.
 
 ## Results
 

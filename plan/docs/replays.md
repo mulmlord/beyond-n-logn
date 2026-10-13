@@ -38,12 +38,17 @@ pass the checked baseline instead of rebuilding it. The verifier rechecks it
 with `check_selected` before reuse:
 
 ```sh
-# P = project dir, as in environment.md
-PATH="$P/.venv/bin:$PATH" python3 -B "$P/upstream/scripts/verify_frontier942.py" \
-  --work "$P/work/<fresh-dir>" \
-  --baseline799 "$P/work/integer-mult-frontier942.PBXIxp/replay/replay/baseline799"
+# R and W as in environment.md
+PATH="$R/.venv/bin:$PATH" python3 -B "$R/scripts/verify_frontier942.py" \
+  --work "$W/<fresh-dir>" \
+  --baseline799 "$W/integer-mult-frontier942.PBXIxp/replay/replay/baseline799"
 ```
 
 Receipts produced this way record `reused_completed_baseline = true` and must
 be reported as reuse, not as cold replays. The 92 MB work directory is kept
-in `$P/work/` (outside the checkout) for this purpose.
+in `beyond-n-logn-work/` for this purpose.
+
+The replay ran before the layout change. At that time the checkout was at
+`beyond-n-logn/upstream/` and the work directory at `beyond-n-logn/work/`, and some
+baseline files record those absolute paths. Reusing the baseline from its new
+location is untested. If `check_selected` rejects it, do a cold rebuild.

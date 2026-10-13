@@ -10,8 +10,8 @@ toolchain.
 ## Tasks
 - The fork already exists at `mulmlord/beyond-n-logn`. Its last push was
   2026-10-10, so it is behind upstream. Sync it with `CrocSwap/integer-mult-bounds`
-  `main` (confirm with the project owner first). Clone it to `upstream/`
-  in the project directory (see `plan/README.md`), with the original repo as the `origin-upstream` remote.
+  `main` (confirm with the project owner first). Clone it as the
+  project directory (see `plan/README.md`), with the original repo as the `origin-upstream` remote.
 - Record the pinned commit in `docs/pins.md`.
 - Install a C++17 compiler, Boost headers (Boost.Multiprecision), and
   Python 3.11+ with `numpy sympy scipy`. Capture the versions in `docs/environment.md`.

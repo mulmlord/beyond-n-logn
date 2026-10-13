@@ -13,29 +13,30 @@
 
 ## Local checkout
 
-From the project directory:
-
 ```sh
-git clone git@github.com:mulmlord/beyond-n-logn.git upstream
-git -C upstream remote add origin-upstream https://github.com/CrocSwap/integer-mult-bounds.git
+cd ~/Projects
+git clone git@github.com:mulmlord/beyond-n-logn.git
+git -C beyond-n-logn remote add origin-upstream https://github.com/CrocSwap/integer-mult-bounds.git
+mkdir beyond-n-logn-work
+echo '.claude/' >> beyond-n-logn/.git/info/exclude   # local-only ignore
 ```
 
 Replays pin the upstream commit above, not the fork's `main`. Run them from
 a detached checkout of that commit, or check that `plan/` is the only
-difference: `git -C upstream diff --stat abdc6a70 main` should list only `plan/`.
+difference: `git diff --stat abdc6a70 main` should list only `plan/`.
 
 ## Syncing the fork
 
 The fork's `main` carries `plan/`, so it can't be fast-forwarded. Merge
 upstream into it instead. Upstream never touches `plan/`, so the merge
-should not conflict.
+should not conflict. From the checkout root:
 
 ```sh
-git -C upstream fetch origin-upstream main
-git -C upstream switch main
-git -C upstream pull --ff-only origin main
-git -C upstream merge --no-edit origin-upstream/main
-git -C upstream push origin main
+git fetch origin-upstream main
+git switch main
+git pull --ff-only origin main
+git merge --no-edit origin-upstream/main
+git push origin main
 ```
 
 Push over SSH. `gh repo sync` is refused when upstream commits touch
@@ -49,8 +50,8 @@ filter (`verify.yml`, `bit-elim-144.yml`, `bit-reuse-147.yml`,
 ## Branches for upstream PRs
 
 ```sh
-git -C upstream fetch origin-upstream main
-git -C upstream switch -c <topic> origin-upstream/main
+git fetch origin-upstream main
+git switch -c <topic> origin-upstream/main
 ```
 
 Never branch from the fork's `main`. That would put `plan/` into the upstream PR.
